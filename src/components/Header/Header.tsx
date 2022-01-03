@@ -8,7 +8,7 @@ const Header = () => {
           Home
         </a>
         <a className="header__navigation--item" href="#">
-          Sobre
+          Contato
         </a>
       </nav>
     </header>
