@@ -1,0 +1,32 @@
+#header {
+  height: 3rem;
+
+  border-bottom: 1px solid #e6e6e6;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .header {
+    &__navigation {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+
+      &--item {
+        color: inherit;
+        font-size: 1.25rem;
+        font-weight: 500;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+
+        transition: 0.2s;
+
+        &:hover {
+          border-bottom: 1px solid #800028;
+        }
+      }
+    }
+  }
+}
