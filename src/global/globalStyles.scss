@@ -5,6 +5,10 @@
   -webkit-font-smoothing: antialiased;
 }
 
+#root {
+  height: 100vh;
+}
+
 html {
   @media (max-width: 1280px) {
     font-size: 93.75%; // 15px
@@ -24,4 +28,8 @@ textarea,
 button {
   font-family: "Poppins", sans-serif;
   color: #1a1a1a;
+}
+
+button {
+  cursor: pointer;
 }
