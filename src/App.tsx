@@ -1,8 +1,14 @@
+import { Header } from "./components";
+import Contact from "./views/Contact";
+import Home from "./views/Home";
+
 function App() {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <>
+      <Header />
+      {/* <Home /> */}
+      <Contact />
+    </>
   );
 }
 
