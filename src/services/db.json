@@ -1,0 +1,16 @@
+{
+  "meats": [
+    {
+      "id": 1,
+      "name": "picanha",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, aperiam omnis possimus ducimus doloremque tempora distinctio magnam voluptatum sequi unde quibusdam, voluptates eligendi exercitationem nesciunt? Magni non dolorem expedita? Adipisci!",
+      "image": "images/homem-aranha.png"
+    },
+    {
+      "id": 2,
+      "name": "costela",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, aperiam omnis possimus ducimus doloremque tempora distinctio magnam voluptatum sequi unde quibusdam, voluptates eligendi exercitationem nesciunt? Magni non dolorem expedita? Adipisci!",
+      "image": "images/homem-aranha.png"
+    }
+  ]
+}
