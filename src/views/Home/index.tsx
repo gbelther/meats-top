@@ -1,6 +1,14 @@
+import { useHistory } from "react-router-dom";
+
 import "./styles.scss";
 
 const Home = () => {
+  const history = useHistory();
+
+  const handleRedirectToContact = () => {
+    history.push("contato");
+  };
+
   return (
     <main id="p-home">
       <h1>Aprenda com os melhores</h1>
@@ -37,7 +45,9 @@ const Home = () => {
         </section>
       </div>
       <div className="p-home__footer">
-        <button>Deixar Contato</button>
+        <button type="button" onClick={() => handleRedirectToContact()}>
+          Deixar Contato
+        </button>
         <p>Entraremos em contato{"\n"} em breve!</p>
       </div>
     </main>
