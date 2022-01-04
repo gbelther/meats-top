@@ -1,48 +1,83 @@
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { SyncLoader } from "react-spinners";
+
+import { api } from "../../services/api";
 
 import "./styles.scss";
 
+interface IMeat {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+}
+
 const Home = () => {
   const history = useHistory();
+
+  const [loadingMeats, setLoadingMeats] = useState(false);
+  const [meats, setMeats] = useState<IMeat[]>([]);
+  const [error, setError] = useState({
+    show: false,
+    message: "",
+  });
 
   const handleRedirectToContact = () => {
     history.push("contato");
   };
 
+  useEffect(() => {
+    const getMeats = async () => {
+      setLoadingMeats(true);
+
+      try {
+        const response = await api.get("/meats");
+
+        setMeats(
+          response.data.map((meat: IMeat) => ({
+            id: meat.id,
+            name: meat.name,
+            description: meat.description,
+            image: meat.image,
+          }))
+        );
+      } catch (error: any) {
+        setError({
+          show: true,
+          message: error.message,
+        });
+      } finally {
+        setLoadingMeats(false);
+      }
+    };
+
+    getMeats();
+  }, []);
+
   return (
     <main id="p-home">
       <h1>Aprenda com os melhores</h1>
       <div className="p-home__content">
-        <section className="p-home__content__wrapper">
-          <div className="p-home__content__wrapper__image-wrapper">
-            <img
-              src="https://res.cloudinary.com/dlsi7gupe/image/upload/v1641264750/Market-app/picanha_kvs5jx.jpg"
-              alt="Imagem de picanha assada"
-              loading="lazy"
-            />
-          </div>
-          <article>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-            odit dolorum exercitationem deleniti neque omnis corrupti? Veritatis
-            dolorum in et quos aspernatur molestiae ab, harum ipsa? Libero
-            voluptatem maxime fugiat.
-          </article>
-        </section>
-        <section className="p-home__content__wrapper">
-          <div className="p-home__content__wrapper__image-wrapper">
-            <img
-              src="https://res.cloudinary.com/dlsi7gupe/image/upload/v1641264694/Market-app/costela_zqrp3d.jpg"
-              alt="Imagem de costela assada"
-              loading="lazy"
-            />
-          </div>
-          <article>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-            odit dolorum exercitationem deleniti neque omnis corrupti? Veritatis
-            dolorum in et quos aspernatur molestiae ab, harum ipsa? Libero
-            voluptatem maxime fugiat.
-          </article>
-        </section>
+        {loadingMeats ? (
+          <SyncLoader />
+        ) : error.show ? (
+          <p>{error.message}</p>
+        ) : (
+          meats.length > 0 &&
+          meats.map((meat) => (
+            <section key={meat.id} className="p-home__content__wrapper">
+              <div className="p-home__content__wrapper__image-wrapper">
+                <img
+                  src={meat.image}
+                  alt={`Imagem representativa da ${meat.name}`}
+                  loading="lazy"
+                />
+              </div>
+              <article>{meat.description}</article>
+            </section>
+          ))
+        )}
       </div>
       <div className="p-home__footer">
         <button type="button" onClick={() => handleRedirectToContact()}>
