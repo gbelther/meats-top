@@ -1,11 +1,21 @@
 #p-about {
   margin-top: 8rem;
+
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
+  h4 {
+    padding-bottom: 1rem;
+  }
+
   .p-about {
     &__form {
+      border: 1px solid #e6e6e6;
+      border-radius: 8px;
+      padding: 2rem;
+
       display: flex;
       flex-direction: column;
       justify-content: space-between;
