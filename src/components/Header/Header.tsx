@@ -1,15 +1,17 @@
+import { Link } from "react-router-dom";
+
 import "./styles.scss";
 
 const Header = () => {
   return (
     <header id="header">
       <nav className="header__navigation">
-        <a className="header__navigation--item" href="#">
+        <Link to="/" className="header__navigation--item" href="#">
           Home
-        </a>
-        <a className="header__navigation--item" href="#">
+        </Link>
+        <Link to="/contato" className="header__navigation--item" href="#">
           Contato
-        </a>
+        </Link>
       </nav>
     </header>
   );
