@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
 
 import { api } from "../../services/api";
+import { MeatInformations } from "./components";
 
 import "./styles.scss";
 
@@ -66,16 +67,14 @@ const Home = () => {
         ) : (
           meats.length > 0 &&
           meats.map((meat) => (
-            <section key={meat.id} className="p-home__content__wrapper">
-              <div className="p-home__content__wrapper__image-wrapper">
-                <img
-                  src={meat.image}
-                  alt={`Imagem representativa da ${meat.name}`}
-                  loading="lazy"
-                />
-              </div>
-              <article>{meat.description}</article>
-            </section>
+            <MeatInformations
+              key={meat.id}
+              data={{
+                name: meat.name,
+                description: meat.description,
+                image: meat.image,
+              }}
+            />
           ))
         )}
       </div>
